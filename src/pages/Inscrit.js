@@ -44,7 +44,7 @@ function Inscrit() {
             const data = { nom, pass }
           
             try {
-                await axios.post('http://localhost:8000/inscrit', data).then((response) => {
+                await axios.post('https://backende-tafa.onrender.com/inscrit', data).then((response) => {
     
                     window.location.href = './login';
 
