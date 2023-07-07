@@ -28,7 +28,7 @@ const Message = () => {
     const userId = sessionStorage.getItem('userId');
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/toususers/${userId}`);
+        const response = await axios.get(`https://backende-tafa.onrender.com/toususers/${userId}`);
         setList(response.data);
       } catch (error) {
         console.log(error);
@@ -49,7 +49,7 @@ const Message = () => {
 
   const fetchMessages = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:8000/makamessage/${id}/${userId}`);
+      const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
       setMess(response.data);
 
     } catch (error) {
@@ -78,14 +78,14 @@ const Message = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/message', {
+      const response = await axios.post('https://backende-tafa.onrender.com/message', {
         sender_id: userId,
         recipient_id: temp,
         content: message,
       });
       if (response.data.success) {
 
-        const response = await axios.get(`http://localhost:8000/messagemaj/${temp}/${userId}`);
+        const response = await axios.get(`https://backende-tafa.onrender.com/messagemaj/${temp}/${userId}`);
         const tableau = response.data;
         const f = tableau.length - 1;
         setTemp(tableau[f]['recipient_id']);
