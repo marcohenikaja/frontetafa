@@ -1,8 +1,8 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Login from './pages/Login';
-import Accueil from './pages/Accueil';
+import Login from '/Login';
+import Accueil from '/Accueil';
 import Create from './pages/Create';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -10,7 +10,7 @@ import Navbare from './pages/Navbare';
 import Contact from './pages/Contact';
 import Message from './pages/Message';
 import About from './pages/About';
-import Inscrit from './pages/Inscrit';
+import Inscrit from 'Inscrit';
 import NavbareAdmin from './pages/NavbareAdmin';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
