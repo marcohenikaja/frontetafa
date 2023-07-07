@@ -36,7 +36,7 @@ const Create = (props) => {
 
     const afficher = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/afficherTous");
+            const response = await axios.get("https://backende-tafa.onrender.com/afficherTous");
             setDonnee(response.data);
         } catch (error) {
             console.log(error);
@@ -89,7 +89,7 @@ const Create = (props) => {
     const supprimer = (id) => {
 
         try {
-            const supprime = axios.delete(`http://localhost:8000/deleteone/${id}`).then((response) => {
+            const supprime = axios.delete(`https://backende-tafa.onrender.com/deleteone/${id}`).then((response) => {
                 toast.error('Deleted', {
                     position: "top-center",
                     autoClose: 2000,
@@ -108,7 +108,7 @@ const Create = (props) => {
 
     const modifier = (id) => {
         try {
-            const manova = axios.put(`localhost:8000/updateOne/${id}`)
+            const manova = axios.put(`https://backende-tafa.onrender.com/updateOne/${id}`)
         } catch (error) {
 
         }
