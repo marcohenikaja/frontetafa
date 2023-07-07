@@ -17,6 +17,7 @@ function Login() {
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [anarana, setAnarana] = useState(null);
+    const navigate = useNavigate();
 
     const connexion = async (req, res) => {
         const data = { username, password };
@@ -55,7 +56,7 @@ function Login() {
                             console.log(nom);
                             sessionStorage.setItem('userId', userId);
                             sessionStorage.setItem('username', nom);
-                            window.location.href = '/accueil';
+                               navigate('/accueil');
                            // window.location.href = './Navbare';
                             
 
