@@ -4,12 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import Deconnexion from './Deconnexion';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 
 
 const userId = sessionStorage.getItem('userId');
 const username = sessionStorage.getItem('username');
-
+const navigate= useNavigate();
 const Navbare = () => {
   const [sessionData, setSessionData] = useState(null);
 
@@ -18,7 +19,7 @@ const Navbare = () => {
     const isAuthenticated = sessionStorage.getItem("userId") !== null;
 
     if (!isAuthenticated) {
-      window.location.href = './Login';
+      navigate('./Login');
     }
   }, []);
 
@@ -45,7 +46,7 @@ const Navbare = () => {
               progress: undefined,
               theme: "light",
             });
-            window.location.href = "./Login";
+             navigate('./Login');
           } else {
             toast.error("Problème de déconnexion ppp", {
               position: "top-center",
