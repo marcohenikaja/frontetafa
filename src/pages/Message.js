@@ -126,7 +126,7 @@ const Message = () => {
                 {mess.map((m) => (
                   <div key={m.id}>
 
-                    {m.sender_id != userId ? (
+                    {m.sender_id !== userId ? (
                       <div>
                         <p style={{ background: 'pink', color: 'white', height: '50px', width: '400px', borderRadius: '80px', textAlign: 'center', marginLeft: '-90px' }}>
                           {m.content}
