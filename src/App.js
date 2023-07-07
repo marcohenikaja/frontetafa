@@ -12,8 +12,8 @@ import Message from './pages/Message';
 import About from './pages/About';
 import Inscrit from './pages/Inscrit';
 import NavbareAdmin from './pages/NavbareAdmin';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 
