@@ -56,7 +56,7 @@ const Message = () => {
     try {
       const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
       setMess(response.data);
-
+      console.log(mess)
     } catch (error) {
       console.error(error);
     }
