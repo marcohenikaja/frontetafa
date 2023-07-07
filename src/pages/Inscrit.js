@@ -6,11 +6,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from "./Login";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+
 
 function Inscrit() {
     const [nom, setNom] = useState("")
     const [pass, setPass] = useState("")
     const [passcon, setPasscon] = useState("")
+    const navigate = useNavigate();
+
 
     const miova = (e) => {
         setNom(e.target.value)
@@ -46,7 +50,7 @@ function Inscrit() {
             try {
                 await axios.post('https://backende-tafa.onrender.com/inscrit', data).then((response) => {
     
-                    window.location.href = '/login';
+                       navigate('/login');
 
                 }).catch((error) => {
                     console.log(error);
