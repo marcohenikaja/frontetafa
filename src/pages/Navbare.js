@@ -19,7 +19,7 @@ const Navbare = () => {
     const isAuthenticated = sessionStorage.getItem("userId") !== null;
 
     if (!isAuthenticated) {
-      navigate('./Login');
+    navigate('/login');
     }
   }, []);
 
@@ -46,7 +46,7 @@ const Navbare = () => {
               progress: undefined,
               theme: "light",
             });
-             navigate('./Login');
+             navigate('/login');
           } else {
             toast.error("Problème de déconnexion ppp", {
               position: "top-center",
