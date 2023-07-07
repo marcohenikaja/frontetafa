@@ -26,7 +26,7 @@ const Accueil = () => {
 
     const maka = async () => {
         try {
-            const v = await axios.get('http://localhost:8000/getAllUser');
+            const v = await axios.get('https://backende-tafa.onrender.com/getAllUser');
             setUsers(v.data)
         } catch (error) {
 
@@ -39,7 +39,7 @@ const Accueil = () => {
     const commenteo = async (id) => {
 
         try {
-            const micommanty = await axios.put(`http://localhost:8000/manaocommantera/${id}`,
+            const micommanty = await axios.put(`https://backende-tafa.onrender.com/manaocommantera/${id}`,
                 { comment, userId }
             );
             setComment("")
@@ -67,7 +67,7 @@ const Accueil = () => {
 
     const afficherPub = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/makapub');
+            const response = await axios.get('https://backende-tafa.onrender.com/makapub');
 
             setPubs(response.data);
             console.log(pubs);
@@ -92,7 +92,7 @@ const Accueil = () => {
     const publier = (e) => {
         e.preventDefault();
         try {
-            axios.post('http://localhost:8000/publication', {
+            axios.post('https://backende-tafa.onrender.com/publication', {
                 pub: pub,
                 sender_id: userId,
                // image: image
