@@ -44,8 +44,7 @@ const Message = () => {
   const afficher = (id, ana) => {
   const userId = sessionStorage.getItem('userId');
     const username = sessionStorage.getItem('username');
-    alert(username)
-     alert(userId )
+   
     setAnarana(ana)
     setTemp(id);
     setUser(id);
