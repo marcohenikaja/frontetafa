@@ -55,7 +55,7 @@ function Login() {
                             console.log(nom);
                             sessionStorage.setItem('userId', userId);
                             sessionStorage.setItem('username', nom);
-                            window.location.href = './Accueil';
+                            window.location.href = '/accueil';
                            // window.location.href = './Navbare';
                             
 
