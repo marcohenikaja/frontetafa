@@ -65,7 +65,9 @@ const Message = () => {
 
   
     fetchMessages(id);
-  }, []);
+  }, [mess]);
+
+  
   // const fetchMessages = async (id) => {
   //   try {
   //     const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
