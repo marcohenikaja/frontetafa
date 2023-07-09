@@ -63,8 +63,7 @@ const Message = () => {
       }
     };
 
-    // Appeler fetchMessages avec les arguments appropriés ici
-    const id = 'votre-id'; // Remplacez 'votre-id' par la valeur appropriée
+  
     fetchMessages(id);
   }, []);
   // const fetchMessages = async (id) => {
