@@ -51,15 +51,31 @@ const Message = () => {
     fetchMessages(id);//id recipient_id ito 
   };
 
-  const fetchMessages = async (id) => {
-    try {
-      const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
-      setMess(response.data);
-      console.log(mess)
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
+
+    useEffect(() => {
+    const fetchMessages = async (id) => {
+      try {
+        const response = await axios.get(`http://localhost:8000/makamessage/${id}/${userId}`);
+        setMess(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // Appeler fetchMessages avec les arguments appropriés ici
+    const id = 'votre-id'; // Remplacez 'votre-id' par la valeur appropriée
+    fetchMessages(id);
+  }, []);
+  // const fetchMessages = async (id) => {
+  //   try {
+  //     const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
+  //     setMess(response.data);
+  //     console.log(mess)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
 
 
