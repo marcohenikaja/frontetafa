@@ -31,7 +31,6 @@ const App = () => {
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/message' element={<Message />} />
                     <Route path='/about' element={<About />} />
-                    <Route path='/login' element={<Login />} />
                     <Route path='/inscription' element={<Inscrit />} />
                     <Route path='/NavbareAdmin' element={<NavbareAdmin />} />
                 </Routes>
