@@ -61,9 +61,9 @@ const afficher = (id, ana) => {
       }
     };
 
-    fetchMessages(mess); // Appeler fetchMessages lorsque la valeur de "temp" change
+    fetchMessages(id); // Appeler fetchMessages lorsque la valeur de "temp" change
 
-  }, [temp]);
+  }, [mess]);
 
   
   // const fetchMessages = async (id) => {
