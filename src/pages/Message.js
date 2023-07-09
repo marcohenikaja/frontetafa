@@ -39,7 +39,7 @@ const Message = () => {
     fetchUsers();
   }, [mess]);
 
-  const fetchMessages = async (id) => {
+ const fetchMessages = async (id) => {
     try {
       const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
       setMess(response.data);
@@ -56,8 +56,13 @@ const Message = () => {
   };
 
   useEffect(() => {
-    fetchMessages(id); // Appeler fetchMessages lorsque la valeur de "temp" change
+    fetchMessages(temp); // Appeler fetchMessages lorsque la valeur de "temp" change
+  }, [temp]);
+
+  useEffect(() => {
+    fetchMessages(temp); // Appeler fetchMessages lorsque la valeur de "mess" change
   }, [mess]);
+
 
   
   // const fetchMessages = async (id) => {
