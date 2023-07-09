@@ -39,30 +39,24 @@ const Message = () => {
     fetchUsers();
   }, [mess]);
 
-const afficher = (id, ana) => {
-    const userId = sessionStorage.getItem('userId');
-    const username = sessionStorage.getItem('username');
+  const fetchMessages = async (id) => {
+    try {
+      const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
+      setMess(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const afficher = (id, ana) => {
     setAnarana(ana);
     setTemp(id);
     setUser(id);
-   fetchMessages(id);
+    fetchMessages(id);
   };
 
-
-
-
-    useEffect(() => {
-    const fetchMessages = async (id) => {
-      try {
-        const response = await axios.get(`https://backende-tafa.onrender.com/${id}/${userId}`);
-        setMess(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
+  useEffect(() => {
     fetchMessages(id); // Appeler fetchMessages lorsque la valeur de "temp" change
-
   }, [mess]);
 
   
