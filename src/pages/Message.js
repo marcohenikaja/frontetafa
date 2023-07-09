@@ -45,6 +45,7 @@ const afficher = (id, ana) => {
     setAnarana(ana);
     setTemp(id);
     setUser(id);
+   fetchMessages(id);
   };
 
 
