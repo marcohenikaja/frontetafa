@@ -7,14 +7,14 @@ import Login from "./Login";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-
+import { Spinner } from "react-bootstrap";
 
 function Inscrit() {
     const [nom, setNom] = useState("")
     const [pass, setPass] = useState("")
     const [passcon, setPasscon] = useState("")
      const navigate = useNavigate();
-
+const [loading, setLoading] = useState(false);
 
     const miova = (e) => {
         setNom(e.target.value)
@@ -106,7 +106,11 @@ function Inscrit() {
                                 </Form.Group>
                                 <br />
                                 <Button onClick={inscription} variant="primary" className="w-100 mt-3">
-                                    S'inscrire
+                                  {loading ? (
+                                        <Spinner animation="border" size="sm" />
+                                    ) : (
+                                        "  S'inscrire"
+                                    )}
                                 </Button>
 
 
