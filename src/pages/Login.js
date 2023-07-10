@@ -11,6 +11,7 @@ import Accueil from "./Accueil";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { Spinner } from "react-bootstrap";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -19,7 +20,7 @@ function Login() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [anarana, setAnarana] = useState(null);
     const navigate = useNavigate();
-
+ const [loading, setLoading] = useState(false);
     const connexion = async (req, res) => {
         const data = { username, password };
         if (data.username == "" || data.password == "") {
@@ -131,7 +132,11 @@ function Login() {
                                 </Form.Group>
                                 <br />
                                 <Button onClick={connexion} variant="primary" className="w-100 mt-3">
-                                    Se connecter
+                                     {loading ? (
+                                        <Spinner animation="border" size="sm" />
+                                    ) : (
+                                        " Se connecter"
+                                    )}
                                 </Button>
                             </Form>
                         </div>
