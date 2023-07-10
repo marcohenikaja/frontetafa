@@ -13,7 +13,7 @@ function Inscrit() {
     const [nom, setNom] = useState("")
     const [pass, setPass] = useState("")
     const [passcon, setPasscon] = useState("")
-    const navigate = useNavigate();
+     const navigate = useNavigate();
 
 
     const miova = (e) => {
