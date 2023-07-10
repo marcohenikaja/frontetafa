@@ -46,7 +46,7 @@ const [loading, setLoading] = useState(false);
 
         } else {
             const data = { nom, pass }
-          
+           setLoading(true);
             try {
                 await axios.post('https://backende-tafa.onrender.com/inscrit', data).then((response) => {
                                               if (response.data.success) { navigate('/login');}
