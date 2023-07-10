@@ -50,7 +50,7 @@ function Inscrit() {
             try {
                 await axios.post('https://backende-tafa.onrender.com/inscrit', data).then((response) => {
     
-                       navigate('../login');
+                       navigate('/login');
 
                 }).catch((error) => {
                     console.log(error);
