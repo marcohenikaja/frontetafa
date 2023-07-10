@@ -49,8 +49,8 @@ function Inscrit() {
           
             try {
                 await axios.post('https://backende-tafa.onrender.com/inscrit', data).then((response) => {
-    
-                       navigate('/login');
+                                              if (response.data.success) { navigate('/login');}
+                      
 
                 }).catch((error) => {
                     console.log(error);
