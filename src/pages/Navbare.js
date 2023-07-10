@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 const userId = sessionStorage.getItem('userId');
 const username = sessionStorage.getItem('username');
-
+const navigate=useNavigate();
 const Navbare = () => {
   const [sessionData, setSessionData] = useState(null);
 const navigate= useNavigate();
