@@ -37,7 +37,7 @@ function Login() {
             return;
         }
         else {
-
+ setLoading(true);
             try {
                 await axios.post('https://backende-tafa.onrender.com/login', data)
                     .then((response) => {
