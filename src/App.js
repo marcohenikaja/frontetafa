@@ -33,6 +33,7 @@ const App = () => {
                     <Route path='/about' element={<About />} />
                     <Route path='/inscription' element={<Inscrit />} />
                     <Route path='/NavbareAdmin' element={<NavbareAdmin />} />
+           <Route path="/login" element={<Login />} />
                 </Routes>
                 <ToastContainer />
             </BrowserRouter>
