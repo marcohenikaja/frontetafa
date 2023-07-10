@@ -96,7 +96,7 @@ function Login() {
 
 
     return (
-        <div>
+       <div>
             <Container fluid className="bg-light min-vh-100 d-flex flex-column">
                 <Row className="flex-grow-1">
                     <Col md={{ span: 4, offset: 4 }} className="my-auto">
@@ -135,16 +135,14 @@ function Login() {
                                 </Button>
                             </Form>
                         </div>
-                        <div className="mt-3 text-center">
-                            <a href="/">Mot de passe oublié ?</a>
-                        </div>
+                       
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="text-center mt-3">
+                <Col className="text-center" style={{ marginTop: '-200px' }}>
                         Vous n'avez pas de compte ? <NavLink
                             to="/inscription"
-                            style={{ color: 'black', fontSize: '20px', textDecoration: 'none', borderBottom: 'none', marginRight: '35px' }}
+                            style={{ color: 'blue', fontSize: '20px', textDecoration: 'none', borderBottom: 'none', marginRight: '35px' }}
                         >Inscrivez-vous</NavLink>
                     </Col>
                 </Row>
