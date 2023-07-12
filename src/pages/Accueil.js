@@ -9,6 +9,7 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import FormData from 'form-data';
 
+
 const Accueil = () => {
 
 
@@ -16,15 +17,17 @@ const Accueil = () => {
     const username = sessionStorage.getItem('username');
     const [like, setLike] = useState(0);
     const [liked, setLiked] = useState(false);
+    const [comments, setComments] = useState([]);
 
 
     const [pub, setPub] = useState("");
     const [pubs, setPubs] = useState([]);
-    const [comment, setComment] = useState("");
+    const [commentjiaby, setCommentjiaby] = useState([]);
     const [users, setUsers] = useState([]);
     const [image, setImage] = useState("");
 
     const maka = async () => {
+
         try {
             const v = await axios.get('https://backende-tafa.onrender.com/getAllUser');
             setUsers(v.data)
@@ -36,18 +39,29 @@ const Accueil = () => {
         setImage(e.target.files[0]);
 
     }
+
     const commenteo = async (id) => {
-
         try {
-            const micommanty = await axios.put(`https://backende-tafa.onrender.com/manaocommantera/${id}`,
-                { comment, userId }
-            );
-            setComment("")
+            const micommanty = await axios.put(`https://backende-tafa.onrender.com/manaocommantera/${id}`, {
+                comment: comments[id],
+                userId,
+                username
+            });
+
+            if (micommanty.data.success === true) {
+                setComments((prevComments) => ({
+                    ...prevComments,
+                    [id]: ''
+                }));
+            }
         } catch (error) {
-
+            console.error(error);
         }
+    };
 
-    }
+
+
+
 
     const mampiakatra = () => {
         if (liked) {
@@ -87,7 +101,7 @@ const Accueil = () => {
     };
 
 
-    
+
 
     const publier = (e) => {
         e.preventDefault();
@@ -95,7 +109,7 @@ const Accueil = () => {
             axios.post('https://backende-tafa.onrender.com/publication', {
                 pub: pub,
                 sender_id: userId,
-               // image: image
+                // image: image
             }).then((response) => {
                 setPub("")
                 if (response.data.success) {
@@ -119,7 +133,23 @@ const Accueil = () => {
         }
 
     }
-    
+
+    useEffect(() => {
+        const makamentaire = async () => {
+            try {
+                const response = await axios.get('https://backende-tafa.onrender.com/makamentaire');
+                setCommentjiaby(response.data)
+                console.log(commentjiaby);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        makamentaire();
+    }, [comments]);
+
+
+
+
     return (
         <div style={{ background: 'white' }}>
             <div style={{ marginTop: '100px' }}></div>
@@ -139,26 +169,57 @@ const Accueil = () => {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh' }}>
-                {pubs.map((pubs) => (
-
-                    <Card key={pubs._id} style={{ margin: '10px' }}>
-                        <Card.Header style={{ backgroundColor: 'black', color: 'white' }}>Publication de : {getUserName(pubs.sender_id)}</Card.Header>
-                        <Card.Body>
-
-                            <Card.Text>
-                                {pubs.text} <input type="hidden" value={pubs._id} /><br />
-                                <Form.Control as="textarea" rows={4} value={comment} onChange={(e) => setComment(e.target.value)} />
+                {pubs.map((pub) => (
+                    <Card key={pub._id} style={{ margin: '10px', width: '500px', height: '500px', overflow: 'auto' }}>
+                        <Card.Header style={{ backgroundColor: 'black', color: 'white' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                Publication de : <div style={{ color: 'orange' }}>{getUserName(pub.sender_id)}</div>
+                            </div>
+                        </Card.Header>
+                        <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <Card.Text style={{ overflowWrap: 'break-word' }}>
+                                {pub.text}
                             </Card.Text>
-                            <div className="commenteoe" style={{ borderColor: 'pink', borderRadius: 'red' }}>
+                            <div className="commenteoe" style={{ borderColor: 'pink', borderRadius: 'red', maxHeight: '200px', overflowY: 'auto' }}>
+                                {commentjiaby.map((comment) => {
+                                    if (comment.id_pub === pub._id) {
+                                        return (
+                                            <div key={comment._id}>
+                                                <Button variant="info">{comment.anarana}</Button> - {comment.text}
+                                            </div>
+                                        );
+                                    }
+                                    return null;
+                                })}
+                            </div>
+
+                            <textarea
+                                value={comments[pub._id] || ''}
+                                onChange={(e) =>
+                                    setComments((prevComments) => ({
+                                        ...prevComments,
+                                        [pub._id]: e.target.value
+                                    }))
+                                }
+                                placeholder="Écrire un commentaire..."
+                                style={{ resize: 'none', marginTop: '10px' }}
+                            ></textarea>
+
+                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <Button variant="primary" disabled={liked} onClick={mampiakatra}>
+                                    Like {like}
+                                </Button>
+                             <Button onClick={() => commenteo(pub._id)} variant="success">
+                                    Comment
+                                </Button>
 
                             </div>
 
-                            <Button variant="primary" disabled={liked} onClick={mampiakatra}>LIke {like}</Button><Button onClick={() => commenteo(pubs._id)} variant="success">Comment </Button>
                         </Card.Body>
                     </Card>
                 ))}
-
             </div>
+
 
 
 
