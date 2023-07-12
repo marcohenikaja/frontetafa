@@ -25,13 +25,12 @@ const Message = () => {
 
 
   useEffect(() => {
-    const userId = sessionStorage.getItem('userId');
+   
     const fetchUsers = async () => {
       try {
         const response = await axios.get(`https://backende-tafa.onrender.com/toususers/${userId}`);
         
         setList(response.data);
-        console.log(list);
       } catch (error) {
         console.log(error);
       }
