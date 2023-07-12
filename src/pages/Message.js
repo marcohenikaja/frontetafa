@@ -25,11 +25,10 @@ const Message = () => {
 
 
   useEffect(() => {
-   
+
     const fetchUsers = async () => {
       try {
         const response = await axios.get(`https://backende-tafa.onrender.com/toususers/${userId}`);
-        
         setList(response.data);
       } catch (error) {
         console.log(error);
@@ -38,7 +37,16 @@ const Message = () => {
     fetchUsers();
   }, []);
 
- const fetchMessages = async (id) => {
+
+
+  const afficher = (id, ana) => {
+    setAnarana(ana)
+    setTemp(id);
+    setUser(id);
+    fetchMessages(id);//id recipient_id ito 
+  };
+
+  const fetchMessages = async (id) => {
     try {
       const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
       setMess(response.data);
@@ -46,33 +54,6 @@ const Message = () => {
       console.error(error);
     }
   };
-
-  const afficher = (id, ana) => {
-    setAnarana(ana);
-    setTemp(id);
-    setUser(id);
-    fetchMessages(id);
-  };
-
-  useEffect(() => {
-    fetchMessages(temp); // Appeler fetchMessages lorsque la valeur de "temp" change
-  }, [temp]);
-
-  useEffect(() => {
-    fetchMessages(temp); // Appeler fetchMessages lorsque la valeur de "mess" change
-  }, [mess]);
-
-
-  
-  // const fetchMessages = async (id) => {
-  //   try {
-  //     const response = await axios.get(`https://backende-tafa.onrender.com/makamessage/${id}/${userId}`);
-  //     setMess(response.data);
-  //     console.log(mess)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
 
 
@@ -202,7 +183,7 @@ const Message = () => {
                     }}
                     onClick={() => afficher(user._id, user.login)}
                   >
-                  
+
                   </div>
                   {user.login}
                 </div>
