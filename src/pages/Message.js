@@ -36,7 +36,7 @@ const Message = () => {
       }
     };
     fetchUsers();
-  }, [mess]);
+  }, [user]);
 
  const fetchMessages = async (id) => {
     try {
