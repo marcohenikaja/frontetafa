@@ -58,8 +58,8 @@ function Login() {
                             console.log(nom);
                             sessionStorage.setItem('userId', userId);
                             sessionStorage.setItem('username', nom);
-                              // navigate('/accueil');
-                           window.location.href = './Navbare';
+                             navigate('/accueil');
+                         //  window.location.href = './Navbare';
                             
 
 
